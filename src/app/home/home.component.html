@@ -1,0 +1,26 @@
+<section class="container">
+    <div class="row mb-4">    
+        <div class="d-flex justify-content-center mt-4">
+          <h2><img src="assets/logo.png" alt="logo.png" width="160"></h2> 
+        </div>   
+        <div class="input-group col-2">
+          <input type="text" class="form-control" placeholder="Le logement de vos rêves se trouve ici ..." >
+          <button class="btn btn-outline-secondary" type="button"><img src="assets/search.png" alt="Search" width="40"></button>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <div class="card col-3 m-2"  *ngFor="let property of listProperties" (click)="openDetails(property)">
+        <div class="mt-2 d-flex align-items-center">
+          <img [src]="property.pictureList[0]" class="card-img-top" alt="..." height="200px">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{property.nameProperty}}</h5>
+          <p class="card-text">{{property.textOffer}}</p>
+          <div class="d-flex justify-content-between cardNavPrice p-2">
+            <p class="card-text"><strong>{{property.pricePerNigth}} €</strong></p>
+            <p class="card-text">{{property.location}}</p>
+          </div>
+        </div>
+      </div>
+    </div>   
+</section>
