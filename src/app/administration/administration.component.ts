@@ -13,7 +13,9 @@ export class AdministrationComponent implements OnInit {
   listProperties:Array<Property> = this.servicePorperty.getListProperties();
   tempProperty:Property = new Property();
 
-  constructor(private servicePorperty:PropertyService, private route:Router) { 
+  constructor(
+    private servicePorperty:PropertyService, 
+    private route:Router) { 
   }
 
   ngOnInit(): void {
@@ -25,7 +27,7 @@ export class AdministrationComponent implements OnInit {
 
   newEdit():void{
     this.tempProperty = new Property('Nouvelle annonce');
-    this.servicePorperty.getListProperties().push(this.tempProperty);
+    this.servicePorperty.addProperties(this.tempProperty);
     this.route.navigate([`edit/`,this.tempProperty.id]);
   }
 }

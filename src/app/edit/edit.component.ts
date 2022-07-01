@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Property } from '../model/property';
 import { PropertyService } from '../service/property.service';
@@ -9,10 +9,15 @@ import { PropertyService } from '../service/property.service';
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
+  @ViewChild(`contentModal`) templateRef:ElementRef;
+  closeResult = ``;
 
   currentProperty:Property = new Property();
 
-  constructor(private propertyService:PropertyService, private activatedRoute:ActivatedRoute, private route:Router ){ }
+  constructor(
+    private propertyService:PropertyService, 
+    private activatedRoute:ActivatedRoute, 
+    private route:Router){ }
 
   ngOnInit(): void {
     this.currentProperty = this.propertyService.getPropertyById(this.activatedRoute.snapshot.params[`id`]);
@@ -29,5 +34,4 @@ export class EditComponent implements OnInit {
   goBack():void{
     this.route.navigate([``]);
   }
-
 }

@@ -35,8 +35,10 @@ export class DetailsComponent implements OnInit {
 
     if(this.tempBooking.price > 0)
       this.currentProperty.bookingList.push(this.tempBooking);
+  }
 
-    console.log(this.currentProperty.bookingList);
+  deleteBooking(booking:Booking): void{
+    this.currentProperty.bookingList.splice(this.currentProperty.bookingList.indexOf(booking),1);
   }
 
 }

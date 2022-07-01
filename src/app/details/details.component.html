@@ -22,23 +22,32 @@
             <p class="price"><strong>{{currentProperty.pricePerNigth}} € par nuit</strong></p>
         </div>
     </div>
-    <div class="row d-flex align-items-center justify-content-center divBooking mt-4">
+    <div class="row d-flex justify-content-around divBooking mt-4">
         <h3 class="text-center mt-3">Réservation</h3>
-        <div class="col-6" *ngIf="currentProperty.bookingList.length != 0">
-            <p>Voici les périodes déjà réservées</p>
-            <ul>
-                <li *ngFor="let booking of currentProperty.bookingList">
-                   <p>{{booking.startDate | date:'dd/MM/yyyy'}} au {{booking.endDate | date:'dd/MM/yyyy'}} - {{booking.nigthNumber}} nuités - {{booking.price}} € | Réservé par {{booking.client}}</p>
-                </li>
-            </ul>
+        <div class="col-6" >
+            <div *ngIf="currentProperty.bookingList.length != 0">
+                <h5 class="text-center mb-4">Voici les périodes déjà réservées</h5>
+                <ul *ngFor="let booking of currentProperty.bookingList">
+                    <li class="liBooking">
+                        <p>
+                            {{booking.startDate | date:'dd/MM/yyyy'}} au {{booking.endDate | date:'dd/MM/yyyy'}} - {{booking.nigthNumber}} <span *ngIf="booking.nigthNumber > 1">nuités</span><span *ngIf="booking.nigthNumber == 1">nuité</span> - <strong>{{booking.price}} €</strong> | Réservé par <strong>{{booking.client}}</strong> |
+                        </p>
+                        <button class="btnDeleteBooking" (click)="deleteBooking(booking)"><img src="assets/cross.png" alt="Delete" width="12px"></button>
+                    </li>
+                </ul>
+            </div>
+            <div *ngIf="currentProperty.bookingList.length == 0">
+                <h5 class="text-center">Aucune réservation</h5>
+            </div>
         </div>
-        <div class="col-3">
+        <div class="col-2">
             <input type="date" class="form-control m-1"  [ngModel]="tempStartDate| date: 'yyyy-MM-dd'" (ngModelChange)="tempStartDate = $event" >
             <input type="date" class="form-control m-1"  [ngModel]="tempEndDate| date: 'yyyy-MM-dd'" (ngModelChange)="tempEndDate = $event">  
         </div>
         <div class="col-2">
             <input type="text" class="form-control m-1" placeholder="Nom du client" [(ngModel)]="tempClient">
-            <button class="btn btn-success  ms-5" (click)="booking()">Réserver</button>     
+            <button class="btn btn-success  ms-5 btnBooking" (click)="booking()">Réserver</button>     
+            <p></p>
         </div>
 
     </div>

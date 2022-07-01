@@ -10,7 +10,34 @@
     color: #198754;
 }
 
-.btn{
+.btnBooking{
     background-color: rgb(224, 243, 205);
     color: #198754;
+}
+
+.btnDeleteBooking{
+    border: 1px solid rgb(255, 114, 114);
+    border-radius: 4px;
+    background-color: rgb(255, 223, 223);
+    height: 1rem;
+    width: 1rem;
+    margin-left: 1rem;
+    margin-top: 5px;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.liBooking{
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-end;
+    margin: 0;
+    border-radius: 4px;
+    border: 1px solid transparent;
+}
+.liBooking p{
+    margin: auto;
 }
